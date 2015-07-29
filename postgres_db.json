@@ -33,16 +33,6 @@
     }
   ],
 
-  "provisioners": [
-    {
-	  "type": "shell",
-      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
-      "scripts": [
-        "db_provision.sh"
-      ]
-    }
-  ],
-
   "post-processors": [
 			{
 					"type":     "json-updater",
