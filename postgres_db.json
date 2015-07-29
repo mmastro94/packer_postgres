@@ -1,0 +1,54 @@
+{
+  "variables": {
+        "aws_access_key":       "{{env `ACCESS_KEY`}}",
+        "aws_secret_key":       "{{env `SECRET_KEY`}}",
+        "name":                 "posrgres",
+        "version":              "1",
+        "source_ami":           "ami-d05e75b8",
+        "service":              "db_management",
+        "project":              "devops",
+        "packer_build_number":  ""
+
+  },
+
+  "builders": [
+    {
+        "type":                         "amazon-ebs",
+        "ami_name":                     "postgres-db {{timestamp}}",
+        "source_ami":                   "{{user `source_ami`}}",
+        "access_key":                   "{{user `aws_access_key`}}",
+        "secret_key":                   "{{user `aws_secret_key`}}",
+        "region":                       "us-east-1",
+        "instance_type":                "t2.micro",
+        "ssh_username":                 "ubuntu",
+        "ssh_keypair_name":             "MikeMastro",
+        "ssh_private_key_file":         "/usr/local/bin/MikeMastro.pem",
+        "tags":                         {
+          "service":            "{{user `service`}}",
+          "project":            "{{user `project`}}",
+          "createdTime":        "{{isotime \"20060102 15:04:05 MST\"}}",
+          "packerBuildNumber":  "{{user `packer_build_number`}}"
+        }
+
+    }
+  ],
+
+  "provisioners": [
+    {
+	  "type": "shell",
+      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+      "scripts": [
+        "db_provision.sh"
+      ]
+    }
+  ],
+
+  "post-processors": [
+			{
+					"type":     "json-updater",
+					"ami_id": {
+						"terraform.tfvars.json": [ "ami_id" ]
+					}
+			}
+	]
+}
