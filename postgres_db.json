@@ -1,7 +1,7 @@
 {
   "variables": {
-        "aws_access_key":       "{{env `ACCESS_KEY`}}",
-        "aws_secret_key":       "{{env `SECRET_KEY`}}",
+        "aws_access_key":       "{{env `AWS_ACCESS_KEY`}}",
+        "aws_secret_key":       "{{env `AWS_SECRET_KEY`}}",
         "name":                 "posrgres",
         "version":              "1",
         "source_ami":           "ami-d05e75b8",
