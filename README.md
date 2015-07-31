@@ -19,12 +19,12 @@
 3. Terraform installed on host computer with path visible to Jenkins
       * Path to terraform given to Jenkins user
 
-4. AWS free tier account
+4. Amazon AWS account
 
 #### **Setup**
 
-* You will use [these files](https://git.ellucian.com/users/mmastro/repos/postgres_packer/browse) to run Packer
-* You will use [these files](https://git.ellucian.com/users/mmastro/repos/postgres_terraform/browse) to run Terraform
+* You will use [these files](https://github.com/mmastro94/packer_postgres) to run Packer
+* You will use [these files](https://github.com/mmastro94/terraform_postgres) to run Terraform
 
 **Once you have met all reguirements:**
 
@@ -32,7 +32,7 @@
 
 2. Under **Source Code Manaagement** select _git_ and use the url:
 
-        ssh://git@git.ellucian.com:7999/~mmastro/postgres_packer.git
+        https://github.com/mmastro94/packer_postgres.git
 
 3. Under **Build** click on _add build step_ and select _Execute shell_ then enter the following:
 
@@ -53,7 +53,7 @@
 
 8. Under **Source Code Manaagement** select _git_ and use the url:
 
-        ssh://git@git.ellucian.com:7999/~mmastro/postgres_terraform.git
+        https://github.com/mmastro94/terraform_postgres.git
 
 9. Under **Build Triggers** check _Build after other projects are built
     * Within _Projects to watch_ enter in _"Your\_packer\_job\_name"_ in the text box
@@ -73,6 +73,7 @@
 
 12. Save and return to the Jenkins dashboard
 
+**For an exampe environment click [here](http://ec2-52-4-45-221.compute-1.amazonaws.com/)**
 #### **Usage**
 
 Once you have completed the above steps, simply click on the build now button to the right of your packer project and watch the builds complete.
