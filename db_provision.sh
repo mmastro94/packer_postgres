@@ -7,7 +7,7 @@ cd postgres
 npm -y install
 
 sudo touch /usr/bin/startDb.sh
-echo "exec /usr/bin/nodejs /home/ubuntu/postgres/app.js &> /tmp/postgres.log &" >> /usr/bin/startDb.sh
+echo "exec /usr/bin/nodejs /home/ubuntu/postgres/src/app.js &> /tmp/postgres.log &" >> /usr/bin/startDb.sh
 chmod +x /usr/bin/startDb.sh
 echo "/usr/bin/startDb.sh &" > /etc/rc.local
 echo "exit 0" >> /etc/rc.local
